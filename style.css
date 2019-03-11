@@ -169,7 +169,7 @@ i.fas.fa-search{
   border-radius: 8px;
   font-size: 12px;
   font-weight: bold;
-  padding: 11px;
+  padding: 8px;
   position: relative;
 }
 
@@ -186,7 +186,20 @@ i.fas.fa-search{
   font-size: 8px;
   position: absolute;
   bottom: 0;
-  right: 8px;
+  right: 15px;
   padding-top: 3px;
   color: dimgrey;
+}
+
+i.fas.fa-check-double{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color : dimgrey;
+  font-size: 10px;
+}
+
+.message.received > small.time{
+  bottom : 0;
+  right: 5px;
 }
