@@ -41,12 +41,12 @@ function textEvent(e){
     var timejQ = $(time);
     var check = document.createElement("i");
     var checkjQ = $(check)
-    checkjQ.addClass("fas fa-check-double");
     var date = new Date();
 
     chat.append(divContjQ.addClass("message-container"));
     divContjQ.append(messageQ.addClass("message").addClass("sent").text(textToAdd));
     messageQ.append(timejQ.addClass("time").text(date.getHours()+":"+date.getMinutes()));
+    checkjQ.addClass("fas fa-check-double");
     messageQ.append(checkjQ);
     inputMessage.val("");
     setTimeout(automaticAnswers,3000);

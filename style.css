@@ -32,6 +32,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   background-color: lightgray;
+  box-shadow: 4px 4px grey;
 }
 
 .left-part{
@@ -58,6 +59,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+  cursor: pointer;
 }
 
 .contact-options > i {
@@ -99,6 +101,10 @@ i.fas.fa-search{
   color : dimgrey;
   background-color: white;
   border: 1px solid dimgrey;
+}
+
+#search{
+  width: 80%;
 }
 
 .preview-message{
@@ -175,6 +181,7 @@ i.fas.fa-search{
 
 .sent{
   float: right;
+  min-width: 40px;
   background-color: palegreen;
 }
 
@@ -202,4 +209,11 @@ i.fas.fa-check-double{
 .message.received > small.time{
   bottom : 0;
   right: 5px;
+}
+
+i.fab.fa-whatsapp{
+  position: absolute;
+  left: 2%;
+  top: 1%;
+  color: white;
 }
