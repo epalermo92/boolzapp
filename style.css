@@ -128,6 +128,7 @@ i.fas.fa-search{
   height: 80%;
   width: 100%;
   background-image: url("img/msg-background.jpg");
+  overflow-y: scroll;
 }
 
 .send-message{
@@ -140,7 +141,7 @@ i.fas.fa-search{
 
 #input-message{
   width: 90%;
-  height: 70%;
+  height: 60%;
   border-radius: 5px;
 }
 
@@ -148,4 +149,38 @@ i.fas.fa-search{
   font-size: 20px;
   padding: 0 10px;
   color : dimgrey;
+}
+
+.message-container{
+  width: 100%;
+  padding: 10px;
+}
+
+.message-container::after{
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.message{
+  max-width: 40%;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 11px;
+  position: relative;
+}
+
+.sent{
+  float: right;
+  background-color: palegreen;
+}
+
+.message > small{
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+  padding-top: 3px;
+  color: dimgrey;
 }
