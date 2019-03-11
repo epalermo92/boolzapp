@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .container{
@@ -12,7 +12,7 @@
 }
 
 .green-part{
-  background-color: #1EBEA5;
+  background-color: #588475;
   height: 15%;
   width: 100%;
 }
