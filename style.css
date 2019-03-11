@@ -28,8 +28,9 @@
   width: 80%;
   height: 90%;
   position: absolute;
-  top: 5%;
-  left: 11%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   background-color: lightgray;
 }
 
@@ -177,7 +178,12 @@ i.fas.fa-search{
   background-color: palegreen;
 }
 
-.message > small{
+.received{
+  float: left;
+}
+
+.time{
+  font-size: 9px;
   position: absolute;
   bottom: 0;
   right: 8px;
