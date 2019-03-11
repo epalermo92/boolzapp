@@ -1,3 +1,14 @@
+function automaticTime(){
+    var timePrevMess = $(".right-part .preview-message > small");
+    var timeMessRec = $(".message.received > small.time:first-of-type");
+    var date = new Date();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
+
+    timePrevMess.text(timePrevMess.text()+" "+hour+":"+minutes);
+    timeMessRec.text(hour+":"+minutes);
+}
+
 function automaticAnswers(){
   var chat = $(".chat");
   var divContMessR = document.createElement("div");
@@ -39,6 +50,7 @@ function textEvent(e){
 function init(){
   var input = $("#input-message");
 
+  automaticTime();
   input.keyup(textEvent);
 }
 
