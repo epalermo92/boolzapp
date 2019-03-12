@@ -53,10 +53,14 @@ function textEvent(e){
     var check = document.createElement("i");
     var checkjQ = $(check)
     var date = new Date();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
+    hour = oneDigitTime(hour);
+    minutes = oneDigitTime(minutes);
 
     chat.append(divContjQ.addClass("message-container"));
     divContjQ.append(messageQ.addClass("message").addClass("sent").text(textToAdd));
-    messageQ.append(timejQ.addClass("time").text(date.getHours()+":"+date.getMinutes()));
+    messageQ.append(timejQ.addClass("time").text(hour+":"+minutes));
     checkjQ.addClass("fas fa-check-double");
     messageQ.append(checkjQ);
     inputMessage.val("");
