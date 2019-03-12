@@ -68,7 +68,7 @@
 }
 
 .active-notifications{
-  height: 11%;
+  height: 10%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -92,6 +92,7 @@ i.fas.fa-bell-slash{
 }
 
 .search-contacts{
+  height: 5%;
   padding: 5px;
   display: flex;
   justify-content: center;
@@ -109,6 +110,15 @@ i.fas.fa-search{
 
 .preview-message{
   width: 65%;
+}
+
+.contacts{
+  height: 75%;
+  overflow-y: scroll;
+}
+
+.contacts > .contact.list{
+  height: 15%;
 }
 
 .contact small{
