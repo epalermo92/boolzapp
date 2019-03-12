@@ -1,13 +1,9 @@
 function oneDigitTime(time){       //Funzione che fixa il bug della mancanza della cifra che indica le decine
                                    //nelle ore e nei minuti (esempio : 10:0 anzichè 10:00)
   if (time >= 0 && time <= 9) {
-
     return "0"+time;
-
   }else {
-
     return time;
-
   }
 }
 
@@ -96,7 +92,6 @@ function sendMessage(){
 }
 
 function init(){
-
   automaticTime();
   sendMessage();
   searchContacts();

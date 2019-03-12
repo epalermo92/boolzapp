@@ -100,13 +100,13 @@ i.fas.fa-bell-slash{
   height: 5%;
   padding: 5px;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 i.fas.fa-search{
   color : dimgrey;
-  background-color: white;
-  border: 1px solid dimgrey;
+  padding-left: 5px;
 }
 
 #search{
@@ -227,10 +227,21 @@ i.fas.fa-check-double{
 }
 
 i.fab.fa-whatsapp{
-  position: absolute;
-  left: 2%;
-  top: 1%;
   color: white;
+}
+
+.icon{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  padding-top: 2px;
+  color : white;
+}
+
+.icon > h3{
+  padding-left: 5px;
 }
 
 .hidden{
