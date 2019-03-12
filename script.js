@@ -71,6 +71,9 @@ function textEvent(e){
 function search(){
   var me = $(this);
   var inputVal = me.val();
+  var letZero = inputVal.charAt(0).toUpperCase();
+  inputVal = inputVal.slice(1,inputVal.length);
+  inputVal = letZero + inputVal;
   var nameContacts = $(".contacts > .contact.list h5");
   var contacts = $(".contacts > .contact.list");
 
