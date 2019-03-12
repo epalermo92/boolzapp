@@ -1,9 +1,24 @@
+function oneDigitTime(time){       //Funzione che fixa il bug della mancanza della cifra che indica le decine
+                                   //nelle ore e nei minuti (esempio : 10:0 anzichè 10:00)
+  if (time >= 0 && time <= 9) {
+
+    return "0"+time;
+
+  }else {
+
+    return time;
+
+  }
+}
+
 function automaticTime(){
     var timePrevMess = $(".right-part .preview-message > small");
     var timeMessRec = $(".message.received > small.time:first-of-type");
     var date = new Date();
     var hour = date.getHours();
     var minutes = date.getMinutes();
+    hour = oneDigitTime(hour);
+    minutes = oneDigitTime(minutes);
 
     timePrevMess.text(timePrevMess.text()+" "+hour+":"+minutes);
     timeMessRec.text(hour+":"+minutes);
@@ -55,14 +70,14 @@ function textEvent(e){
 
 function search(){
   var me = $(this);
-  var val = me.val();
+  var inputVal = me.val();
   var nameContacts = $(".contacts > .contact.list h5");
   var contacts = $(".contacts > .contact.list");
 
   contacts.removeClass("hidden");
   for (var i = 0; i < nameContacts.length; i++) {
     var name = nameContacts.eq(i).text();
-    if(!name.includes(val)){
+    if(!name.includes(inputVal)){
       contacts.eq(i).addClass("hidden");
     }
   }
@@ -74,12 +89,17 @@ function searchContacts(){
   inputSearch.keyup(search);
 }
 
-function init(){
+function sendMessage(){
   var input = $("#input-message");
 
-  automaticTime();
-  searchContacts();
   input.keyup(textEvent);
+}
+
+function init(){
+
+  automaticTime();
+  sendMessage();
+  searchContacts();
 }
 
 $(document).ready(init);

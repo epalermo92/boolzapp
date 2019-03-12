@@ -62,6 +62,11 @@
   cursor: pointer;
 }
 
+.contact.list > img{
+  height: 40px;
+  width: 40px;
+}
+
 .contact-options > i {
   padding-right: 3px;
   color: dimgrey;
