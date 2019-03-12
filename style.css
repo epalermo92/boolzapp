@@ -227,3 +227,7 @@ i.fab.fa-whatsapp{
   top: 1%;
   color: white;
 }
+
+.hidden{
+  display: none;
+}

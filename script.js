@@ -53,10 +53,32 @@ function textEvent(e){
   }
 }
 
+function search(){
+  var me = $(this);
+  var val = me.val();
+  var nameContacts = $(".contacts > .contact.list h5");
+  var contacts = $(".contacts > .contact.list");
+
+  contacts.removeClass("hidden");
+  for (var i = 0; i < nameContacts.length; i++) {
+    var name = nameContacts.eq(i).text();
+    if(!name.includes(val)){
+      contacts.eq(i).addClass("hidden");
+    }
+  }
+}
+
+function searchContacts(){
+  var inputSearch = $("#search");
+
+  inputSearch.keyup(search);
+}
+
 function init(){
   var input = $("#input-message");
 
   automaticTime();
+  searchContacts();
   input.keyup(textEvent);
 }
 
