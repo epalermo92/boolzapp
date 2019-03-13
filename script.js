@@ -21,7 +21,7 @@ function automaticTime(){
 }
 
 function automaticAnswers(){
-  var chat = $(".chat");
+  var chat = $(".chat.active");
   var divContMessR = document.createElement("div");
   var messageReceived = document.createElement("div");
   var divContMessRjQ = $(divContMessR);
@@ -39,7 +39,7 @@ function automaticAnswers(){
 
 
 function textEvent(e){
-  var chat = $(".chat");
+  var chat = $(".chat.active");
   var inputMessage = $("#input-message");
 
   if(e.which == 13){
@@ -98,10 +98,44 @@ function sendMessage(){
   input.keyup(textEvent);
 }
 
+function change(){
+  var me = $(this);
+  var name = me.find("h5").text();
+  var contactToChange = $(".right-part > .contact");
+  var contactNameToChange = contactToChange.find("h5");
+
+  contactNameToChange.text(name);
+}
+
+function changeChatContactName(){
+  var contacts = $(".contacts > .contact.list");
+
+  contacts.click(change);
+}
+
+function clickChange(){
+  var me = $(this);
+  var meIndex = me.index();
+  var chats = $(".chat");
+
+  chats.removeClass("active").addClass("hidden");
+  chats.eq(meIndex).removeClass("hidden").addClass("active");
+
+}
+
+function changeConversation(){
+  var contacts = $(".contacts > .contact.list");
+
+  contacts.click(clickChange);
+}
+
+
 function init(){
   automaticTime();
   sendMessage();
   searchContacts();
+  changeChatContactName();
+  changeConversation();
 }
 
 $(document).ready(init);

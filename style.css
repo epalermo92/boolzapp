@@ -75,6 +75,7 @@
 .active-notifications{
   height: 10%;
   width: 100%;
+  padding: 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -246,4 +247,8 @@ i.fab.fa-whatsapp{
 
 .hidden{
   display: none;
+}
+
+.active{
+  display: block;
 }
