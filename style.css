@@ -193,6 +193,7 @@ i.fas.fa-search{
   font-weight: bold;
   padding: 8px;
   position: relative;
+  cursor: pointer;
 }
 
 .sent{
@@ -251,4 +252,24 @@ i.fab.fa-whatsapp{
 
 .active{
   display: block;
+}
+
+.menu-delete{
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: beige;
+  color : grey;
+  border: 1px solid grey;
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  z-index: 100;
+  display: none;
+}
+
+.menu-delete:hover{
+  background-color: lavender;
+  text-decoration: underline;
 }

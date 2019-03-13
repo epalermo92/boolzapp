@@ -37,8 +37,7 @@ function automaticAnswers(){
   messageReceivedjQ.append(timejQ.addClass("time").text(date.getHours()+":"+date.getMinutes()));
 }
 
-
-function textEvent(e){
+function sending(e){
   var chat = $(".chat.active");
   var inputMessage = $("#input-message");
 
@@ -64,7 +63,7 @@ function textEvent(e){
     checkjQ.addClass("fas fa-check-double");
     messageQ.append(checkjQ);
     inputMessage.val("");
-    setTimeout(automaticAnswers,3000);
+    setTimeout(automaticAnswers,1000);
   }
 }
 
@@ -95,7 +94,7 @@ function searchContacts(){
 function sendMessage(){
   var input = $("#input-message");
 
-  input.keyup(textEvent);
+  input.keyup(sending);
 }
 
 function change(){
@@ -129,6 +128,31 @@ function changeConversation(){
   contacts.click(clickChange);
 }
 
+function createDeleteMenu(){
+  var messages = $(".message");
+  var me = $(this);
+  var menu = document.createElement("div");
+
+  if(me.children(".menu-delete").index() == -1){      //Se menu-delete non è presente,allora viene creato.In caso contrario non viene duplicato
+    $(menu).addClass("menu-delete").text("Cancella il messaggio");
+    me.append(menu);
+    me.children(".menu-delete").slideDown("fast");
+  }else if (me.children(".menu-delete").index() == 1) {
+    me.children(".menu-delete").slideToggle("fast");
+  }
+
+}
+
+function deleteMenu(){
+  var menu = $(".menu-delete");
+
+  menu.click(function () {
+    var me = $(this);
+    var messageToDelete = me.closest(".message-container");
+
+    messageToDelete.remove();
+  });
+}
 
 function init(){
   automaticTime();
@@ -136,6 +160,8 @@ function init(){
   searchContacts();
   changeChatContactName();
   changeConversation();
+  $(document).on("click",".message",createDeleteMenu);
+  $(document).on("click",".menu-delete",deleteMenu);
 }
 
 $(document).ready(init);
