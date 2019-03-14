@@ -63,7 +63,7 @@ function sending(e){
     checkjQ.addClass("fas fa-check-double");
     messageQ.append(checkjQ);
     inputMessage.val("");
-    setTimeout(automaticAnswers,1000);
+    setTimeout(automaticAnswers,2000);
   }
 }
 
@@ -102,11 +102,13 @@ function change(){
   var name = me.find("h5").text();
   var contactToChange = $(".right-part > .contact");
   var contactNameToChange = contactToChange.find("h5");
+  var srcImgToShow = me.children("img").attr("src");
 
+  contactToChange.children("img").attr("src",srcImgToShow);
   contactNameToChange.text(name);
 }
 
-function changeChatContactName(){
+function changeChatContactNameAndImg(){
   var contacts = $(".contacts > .contact.list");
 
   contacts.click(change);
@@ -131,16 +133,13 @@ function changeConversation(){
 function createDeleteMenu(){
   var messages = $(".message");
   var me = $(this);
-  var menu = document.createElement("div");
 
   if(me.children(".menu-delete").index() == -1){      //Se menu-delete non è presente,allora viene creato.In caso contrario non viene duplicato
+    var menu = document.createElement("div");
     $(menu).addClass("menu-delete").text("Cancella il messaggio");
     me.append(menu);
     me.children(".menu-delete").slideDown("fast");
-  }else if (me.children(".menu-delete").index() == 1) {
-    me.children(".menu-delete").slideToggle("fast");
   }
-
 }
 
 function deleteMenu(){
@@ -158,7 +157,7 @@ function init(){
   automaticTime();
   sendMessage();
   searchContacts();
-  changeChatContactName();
+  changeChatContactNameAndImg();
   changeConversation();
   $(document).on("click",".message",createDeleteMenu);
   $(document).on("click",".menu-delete",deleteMenu);
