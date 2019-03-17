@@ -1,5 +1,5 @@
 function oneDigitTime(time){       //Funzione che fixa il bug della mancanza della cifra che indica le decine
-                                   //nelle ore e nei minuti (esempio : 10:0 anzichè 10:00)
+                                  //nelle ore e nei minuti (esempio : 10:0 anzichè 10:00)
   if (time >= 0 && time <= 9) {
     return "0"+time;
   }else {
@@ -22,19 +22,23 @@ function automaticTime(){
 
 function automaticAnswers(){
   var chat = $(".chat.active");
-  var divContMessR = document.createElement("div");
-  var messageReceived = document.createElement("div");
-  var divContMessRjQ = $(divContMessR);
-  var messageReceivedjQ = $(messageReceived);
-  var time = document.createElement("small");
-  var timejQ = $(time);
-  var date = new Date();
   var check = $("i.fas.fa-check-double");
-
+  var date = new Date();
+  var hour = date.getHours();
+  var minutes = date.getMinutes();
+  hour = oneDigitTime(hour);
+  minutes = oneDigitTime(minutes);
+  var template = $("#template").html();
+  var compiled = Handlebars.compile(template);
+  var data = {
+    nomeClasse : "received",
+    testo : "Ok",
+    time : hour+":"+minutes,
+    testoMenu : "Cancella il messaggio",
+  };
+  var finalHTML = compiled(data);
   check.css("color","blue");
-  chat.append(divContMessRjQ.addClass("message-container"));
-  divContMessRjQ.append(messageReceivedjQ.addClass("message").addClass("received").text("Ok"));
-  messageReceivedjQ.append(timejQ.addClass("time").text(date.getHours()+":"+date.getMinutes()));
+  chat.append(finalHTML);
 }
 
 function sending(e){
@@ -42,43 +46,37 @@ function sending(e){
   var inputMessage = $("#input-message");
 
   if(e.which == 13){
-    var divContMess = document.createElement("div");
-    var message = document.createElement("div");
-    var divContjQ = $(divContMess);
-    var messageQ = $(message);
     var textToAdd = inputMessage.val();
-    var time = document.createElement("small");
-    var timejQ = $(time);
-    var check = document.createElement("i");
-    var checkjQ = $(check)
     var date = new Date();
     var hour = date.getHours();
     var minutes = date.getMinutes();
     hour = oneDigitTime(hour);
     minutes = oneDigitTime(minutes);
-
-    chat.append(divContjQ.addClass("message-container"));
-    divContjQ.append(messageQ.addClass("message").addClass("sent").text(textToAdd));
-    messageQ.append(timejQ.addClass("time").text(hour+":"+minutes));
-    checkjQ.addClass("fas fa-check-double");
-    messageQ.append(checkjQ);
+    var template = $("#template").html();
+    var compiled = Handlebars.compile(template);
+    var data = {
+      nomeClasse : "sent",
+      testo : textToAdd,
+      time : hour+":"+minutes,
+      testoMenu : "Cancella il messaggio",
+    };
+    var finalHTML = compiled(data);
+    chat.append(finalHTML);
     inputMessage.val("");
     setTimeout(automaticAnswers,2000);
   }
+
 }
 
 function search(){
   var me = $(this);
-  var inputVal = me.val();
-  var letZero = inputVal.charAt(0).toUpperCase();
-  inputVal = inputVal.slice(1,inputVal.length);
-  inputVal = letZero + inputVal;
+  var inputVal = me.val().toLowerCase();
   var nameContacts = $(".contacts > .contact.list h5");
   var contacts = $(".contacts > .contact.list");
 
   contacts.removeClass("hidden");
   for (var i = 0; i < nameContacts.length; i++) {
-    var name = nameContacts.eq(i).text();
+    var name = nameContacts.eq(i).text().toLowerCase();
     if(!name.includes(inputVal)){
       contacts.eq(i).addClass("hidden");
     }
@@ -130,28 +128,17 @@ function changeConversation(){
   contacts.click(clickChange);
 }
 
-function createDeleteMenu(){
-  var messages = $(".message");
+function showMenu(){
   var me = $(this);
-
-  if(me.children(".menu-delete").index() == -1){      //Se menu-delete non è presente,allora viene creato.In caso contrario non viene duplicato
-    var menu = document.createElement("div");
-    $(menu).addClass("menu-delete").text("Cancella il messaggio");
-    me.append(menu);
-    me.children(".menu-delete").slideDown("fast");
-  }
+  me.siblings(".menu-delete").slideToggle("fast");
 }
 
-function deleteMenu(){
-  var menu = $(".menu-delete");
-
-  menu.click(function () {
-    var me = $(this);
-    var messageToDelete = me.closest(".message-container");
-
-    messageToDelete.remove();
-  });
+function deleteMessage(){
+  var me = $(this);
+  me.parent(".message-container").remove();
 }
+
+
 
 function init(){
   automaticTime();
@@ -159,8 +146,8 @@ function init(){
   searchContacts();
   changeChatContactNameAndImg();
   changeConversation();
-  $(document).on("click",".message",createDeleteMenu);
-  $(document).on("click",".menu-delete",deleteMenu);
+  $(document).on("click",".message",showMenu);
+  $(document).on("click",".menu-delete",deleteMessage);
 }
 
 $(document).ready(init);
