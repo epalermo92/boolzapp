@@ -7,9 +7,9 @@ HTML,CSS,Javascript,jQuery,Handlebars.js
 <img src="screenshots/homepage.png" width="1200"/>
 <details open>
 <summary>Invio</summary>
-<img src="screenshots/send.gif" widht="1200"/>
+<img src="screenshots/send.gif" width="1200"/>
 </details>
 <details>
 <summary>Cancellazione e ricerca contatto</summary>
-<img src="screenshots/deleteandsearch.gif" widht="1200"/>
+<img src="screenshots/deleteandsearch.gif" width="1200"/>
 </details>
