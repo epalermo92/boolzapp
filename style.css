@@ -120,7 +120,7 @@ i.fas.fa-search{
 
 .contacts{
   height: 75%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .contacts > .contact.list{
